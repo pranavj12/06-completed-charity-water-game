@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Catch the Water</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="game-shell">
+    <section class="top-banner">
+      <div class="brand-chip">charity: water inspired game</div>
+      <h1 class="game-title">Catch the Water</h1>
+      <p class="game-tagline">
+        Catch clean water drops, avoid polluted ones, and fill the future one drop at a time.
+      </p>
+    </section>
+
+    <section class="hud-card">
+      <div class="hud-item">
+        <span class="hud-label">Score</span>
+        <span class="hud-value" id="score">0</span>
+      </div>
+
+      <div class="hud-item">
+        <span class="hud-label">Time</span>
+        <span class="hud-value"><span id="time">30</span>s</span>
+      </div>
+
+      <div class="hud-item lives-box">
+        <span class="hud-label">Water</span>
+        <span class="hud-value" id="lives">💧💧💧💧💧</span>
+      </div>
+
+      <div class="button-wrap">
+        <button id="start-btn">Start Game</button>
+        <button id="reset-btn">Reset</button>
+      </div>
+    </section>
+
+    <div id="message">
+      Press Start, then use the left and right arrow keys to drive the tanker.
+    </div>
+
+    <section id="game-container" aria-label="Catch the Water game area">
+      <div class="sky-strip"></div>
+      <div class="ground-strip"></div>
+      <div id="basket" aria-label="Water tanker"></div>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
