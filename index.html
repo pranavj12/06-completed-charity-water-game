@@ -3,7 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Catch the Water</title>
+  <title>Catch the Water | charity: water inspired game</title>
+
+  <!-- Brand-friendly font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800;900&display=swap"
+    rel="stylesheet"
+  />
+
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -12,8 +21,34 @@
       <div class="brand-chip">charity: water inspired game</div>
       <h1 class="game-title">Catch the Water</h1>
       <p class="game-tagline">
-        Catch clean water drops, avoid polluted ones, and fill the future one drop at a time.
+        Catch clean water drops, avoid polluted ones, and help deliver safe water
+        to more communities — one drop at a time.
       </p>
+
+      <div class="mission-card">
+        <h2>Why this game matters</h2>
+        <p>
+          charity: water works to bring clean and safe drinking water to people
+          around the world. In this game, every clean drop you collect helps
+          represent that mission.
+        </p>
+      </div>
+    </section>
+
+    <section class="control-bar">
+      <div class="difficulty-card">
+        <label for="difficulty" class="control-label">Difficulty</label>
+        <select id="difficulty">
+          <option value="easy">Easy</option>
+          <option value="normal" selected>Normal</option>
+          <option value="hard">Hard</option>
+        </select>
+      </div>
+
+      <div class="instruction-card">
+        <span class="control-label">How to play</span>
+        <p>Use the left and right arrow keys to move the tanker.</p>
+      </div>
     </section>
 
     <section class="hud-card">
@@ -27,6 +62,11 @@
         <span class="hud-value"><span id="time">30</span>s</span>
       </div>
 
+      <div class="hud-item">
+        <span class="hud-label">Goal</span>
+        <span class="hud-value" id="goal">120</span>
+      </div>
+
       <div class="hud-item lives-box">
         <span class="hud-label">Water</span>
         <span class="hud-value" id="lives">💧💧💧💧💧</span>
@@ -38,16 +78,42 @@
       </div>
     </section>
 
-    <div id="message">
-      Press Start, then use the left and right arrow keys to drive the tanker.
-    </div>
+    <section class="message-panel">
+      <div id="message">
+        Press Start, then use the left and right arrow keys to drive the tanker.
+      </div>
+      <div id="milestone-message" aria-live="polite"></div>
+    </section>
 
     <section id="game-container" aria-label="Catch the Water game area">
       <div class="sky-strip"></div>
+      <div class="cloud cloud-1"></div>
+      <div class="cloud cloud-2"></div>
+      <div class="cloud cloud-3"></div>
       <div class="ground-strip"></div>
       <div id="basket" aria-label="Water tanker"></div>
     </section>
+
+    <footer class="site-footer">
+      <p>
+        Inspired by the mission of charity: water to bring clean and safe drinking
+        water to people in need.
+      </p>
+      <div class="footer-links">
+        <a href="https://www.charitywater.org/" target="_blank" rel="noopener noreferrer">
+          Visit charity: water
+        </a>
+        <a href="https://www.charitywater.org/donate" target="_blank" rel="noopener noreferrer">
+          Donate
+        </a>
+      </div>
+    </footer>
   </main>
+
+  
+ <audio id="catch-sound" src="catch.mp3" preload="auto"></audio>
+  <audio id="miss-sound" src="miss.mp3" preload="auto"></audio>
+  <audio id="win-sound" src="win.mp3" preload="auto"></audio>
 
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
   <script src="script.js"></script>

@@ -15,11 +15,12 @@
   --cw-border: #e8eef3;
   --cw-red: #f05a49;
   --cw-green: #159a48;
+  --cw-muted: #5f6f7c;
 }
 
 body {
   min-height: 100vh;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
   color: var(--cw-dark);
   background:
     radial-gradient(circle at top left, rgba(255, 201, 7, 0.16), transparent 22%),
@@ -31,7 +32,7 @@ body {
 }
 
 .game-shell {
-  width: min(100%, 1040px);
+  width: min(100%, 1100px);
   display: flex;
   flex-direction: column;
   gap: 18px;
@@ -75,9 +76,9 @@ body {
   background: var(--cw-yellow);
   color: var(--cw-dark);
   border-radius: 999px;
-  font-size: 0.88rem;
+  font-size: 0.84rem;
   font-weight: 800;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.03em;
   text-transform: uppercase;
   position: relative;
   z-index: 1;
@@ -85,10 +86,10 @@ body {
 
 .game-title {
   margin-top: 14px;
-  font-size: clamp(2.4rem, 5vw, 4.7rem);
+  font-size: clamp(2.4rem, 5vw, 4.8rem);
   line-height: 0.95;
   font-weight: 900;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.05em;
   position: relative;
   z-index: 1;
 }
@@ -96,16 +97,82 @@ body {
 .game-tagline {
   margin-top: 12px;
   max-width: 780px;
-  font-size: clamp(1rem, 2vw, 1.2rem);
-  line-height: 1.45;
+  font-size: clamp(1rem, 2vw, 1.15rem);
+  line-height: 1.5;
   color: #41515d;
   position: relative;
   z-index: 1;
 }
 
+.mission-card {
+  margin-top: 18px;
+  max-width: 640px;
+  background: rgba(255, 255, 255, 0.82);
+  border: 2px solid #edf4f8;
+  border-radius: 20px;
+  padding: 16px 18px;
+  position: relative;
+  z-index: 1;
+}
+
+.mission-card h2 {
+  font-size: 1rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.mission-card p {
+  color: var(--cw-muted);
+  line-height: 1.55;
+  font-size: 0.96rem;
+}
+
+.control-bar {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 14px;
+}
+
+.difficulty-card,
+.instruction-card {
+  background: var(--cw-panel);
+  border: 2px solid var(--cw-border);
+  border-radius: 20px;
+  padding: 16px;
+  box-shadow: 0 10px 24px rgba(21, 42, 68, 0.05);
+}
+
+.control-label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #738392;
+  margin-bottom: 8px;
+}
+
+#difficulty {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 2px solid #dfeaf2;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 700;
+  background: #fff;
+  outline: none;
+}
+
+.instruction-card p {
+  color: var(--cw-muted);
+  line-height: 1.5;
+  font-weight: 500;
+}
+
 .hud-card {
   display: grid;
-  grid-template-columns: repeat(3, minmax(120px, 1fr)) auto;
+  grid-template-columns: repeat(4, minmax(100px, 1fr)) auto;
   gap: 14px;
   align-items: stretch;
   background: var(--cw-panel);
@@ -127,7 +194,7 @@ body {
 }
 
 .hud-label {
-  font-size: 0.82rem;
+  font-size: 0.78rem;
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -136,14 +203,14 @@ body {
 }
 
 .hud-value {
-  font-size: clamp(1.2rem, 2vw, 1.7rem);
+  font-size: clamp(1.1rem, 2vw, 1.6rem);
   font-weight: 900;
   color: var(--cw-dark);
 }
 
 .lives-box .hud-value {
-  letter-spacing: 0.1em;
-  font-size: clamp(1.15rem, 1.8vw, 1.5rem);
+  letter-spacing: 0.08em;
+  font-size: clamp(1.05rem, 1.8vw, 1.35rem);
 }
 
 .button-wrap {
@@ -162,6 +229,7 @@ body {
   min-width: 148px;
   font-size: 1rem;
   font-weight: 900;
+  font-family: inherit;
   cursor: pointer;
   transition: transform 0.16s ease, box-shadow 0.16s ease, opacity 0.16s ease;
 }
@@ -182,13 +250,29 @@ body {
   color: #fff;
 }
 
+.message-panel {
+  min-height: 64px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+}
+
 #message {
-  min-height: 34px;
+  min-height: 24px;
   text-align: center;
-  font-size: 1.05rem;
-  font-weight: 900;
+  font-size: 1rem;
+  font-weight: 800;
   color: var(--cw-green);
   padding: 2px 8px;
+}
+
+#milestone-message {
+  min-height: 22px;
+  text-align: center;
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--cw-blue);
 }
 
 #game-container {
@@ -220,6 +304,84 @@ body {
   pointer-events: none;
 }
 
+.cloud {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 999px;
+  filter: blur(0.4px);
+}
+
+.cloud::before,
+.cloud::after {
+  content: "";
+  position: absolute;
+  background: rgba(255, 255, 255, 0.86);
+  border-radius: 50%;
+}
+
+.cloud-1 {
+  width: 110px;
+  height: 32px;
+  top: 72px;
+  left: 8%;
+}
+
+.cloud-1::before {
+  width: 36px;
+  height: 36px;
+  left: 12px;
+  top: -14px;
+}
+
+.cloud-1::after {
+  width: 42px;
+  height: 42px;
+  right: 14px;
+  top: -18px;
+}
+
+.cloud-2 {
+  width: 140px;
+  height: 36px;
+  top: 112px;
+  right: 12%;
+}
+
+.cloud-2::before {
+  width: 44px;
+  height: 44px;
+  left: 16px;
+  top: -16px;
+}
+
+.cloud-2::after {
+  width: 50px;
+  height: 50px;
+  right: 12px;
+  top: -20px;
+}
+
+.cloud-3 {
+  width: 90px;
+  height: 28px;
+  top: 160px;
+  left: 22%;
+}
+
+.cloud-3::before {
+  width: 30px;
+  height: 30px;
+  left: 10px;
+  top: -12px;
+}
+
+.cloud-3::after {
+  width: 34px;
+  height: 34px;
+  right: 10px;
+  top: -14px;
+}
+
 .ground-strip {
   position: absolute;
   left: 0;
@@ -232,7 +394,8 @@ body {
   border-top: 4px solid rgba(0, 0, 0, 0.06);
 }
 
-.water-drop {
+.water-drop,
+.polluted-drop {
   position: absolute;
   border-radius: 50% 50% 50% 0;
   transform: rotate(-45deg);
@@ -241,7 +404,8 @@ body {
     0 8px 18px rgba(0, 0, 0, 0.08);
 }
 
-.water-drop::after {
+.water-drop::after,
+.polluted-drop::after {
   content: "";
   position: absolute;
   width: 22%;
@@ -249,19 +413,22 @@ body {
   top: 18%;
   left: 22%;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.34);
 }
 
-.good-drop {
+.water-drop {
   background: linear-gradient(180deg, #5dbdff 0%, var(--cw-blue) 100%);
 }
 
-.bad-drop {
-  background: linear-gradient(180deg, #2f2f2f 0%, #111111 100%);
+.water-drop::after {
+  background: rgba(255, 255, 255, 0.34);
 }
 
-.bad-drop::after {
-  background: rgba(255, 255, 255, 0.08);
+.polluted-drop {
+  background: linear-gradient(180deg, #4a4a4a 0%, #111111 100%);
+}
+
+.polluted-drop::after {
+  background: rgba(255, 255, 255, 0.09);
 }
 
 #basket {
@@ -277,7 +444,6 @@ body {
   box-shadow: 0 12px 22px rgba(18, 67, 121, 0.22);
 }
 
-/* tanker cabin */
 #basket::before {
   content: "";
   position: absolute;
@@ -292,7 +458,6 @@ body {
   box-shadow: inset 0 -4px 0 rgba(255,255,255,0.16);
 }
 
-/* tanker wheels + tank stripe */
 #basket::after {
   content: "";
   position: absolute;
@@ -327,7 +492,58 @@ body {
   100% { box-shadow: 0 0 0 rgba(240, 90, 73, 0); }
 }
 
+.milestone-pop {
+  animation: milestonePulse 0.5s ease;
+}
+
+@keyframes milestonePulse {
+  0% { transform: translateY(6px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+.site-footer {
+  background: #ffffff;
+  border: 2px solid var(--cw-border);
+  border-radius: 22px;
+  padding: 18px 20px;
+  box-shadow: 0 10px 24px rgba(21, 42, 68, 0.05);
+  text-align: center;
+}
+
+.site-footer p {
+  color: var(--cw-muted);
+  line-height: 1.5;
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+}
+
+.footer-links {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.footer-links a {
+  text-decoration: none;
+  font-weight: 800;
+  color: #0c6fc7;
+  background: #eef7ff;
+  padding: 10px 14px;
+  border-radius: 999px;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.footer-links a:hover {
+  background: #dff0ff;
+  transform: translateY(-1px);
+}
+
 @media (max-width: 980px) {
+  .control-bar {
+    grid-template-columns: 1fr;
+  }
+
   .hud-card {
     grid-template-columns: repeat(2, 1fr);
   }
